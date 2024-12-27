@@ -47,7 +47,7 @@ Before diving into SQL, it’s important to understand the dataset thoroughly. T
 - `Album_type`: The type of album (e.g., single or album).
 - Various metrics such as `danceability`, `energy`, `loudness`, `tempo`, and more.
 
-### 4. Querying the Data
+### 2. Querying the Data
 After the data is inserted, various SQL queries can be written to explore and analyze the data. Queries are categorized into **easy**, **medium**, and **advanced** levels to help progressively develop SQL proficiency.
 
 #### Easy Queries
@@ -59,7 +59,7 @@ After the data is inserted, various SQL queries can be written to explore and an
 #### Advanced Queries
 - Nested subqueries, window functions, CTEs, and performance optimization.
 
-### 5. Query Optimization
+### 3. Query Optimization
 In advanced stages, the focus shifts to improving query performance. Some optimization strategies include:
 - **Indexing**: Adding indexes on frequently queried columns.
 - **Query Execution Plan**: Using `EXPLAIN ANALYZE` to review and refine query performance.
@@ -78,7 +78,7 @@ FROM
 WHERE 
     stream > 1000000000;
 ```
-3. List all albums along with their respective artists.
+2. List all albums along with their respective artists.
 ```sql
 SELECT 
     album, 
@@ -88,7 +88,7 @@ FROM
 GROUP BY 
     album, artist;
 ```
-5. Get the total number of comments for tracks where `licensed = TRUE`.
+3. Get the total number of comments for tracks where `licensed = TRUE`.
 ```sql
 SELECT 
     SUM(comments) AS total_comments 
@@ -97,8 +97,8 @@ FROM
 WHERE 
     licensed = TRUE;
 ``` 
-7. Find all tracks that belong to the album type `single`.
-8. Count the total number of tracks by each artist.
+4. Find all tracks that belong to the album type `single`.
+5. Count the total number of tracks by each artist.
 
 ### Medium Level
 1. Calculate the average danceability of tracks in each album.
@@ -124,7 +124,7 @@ Order by 1 , 3 desc
 Select * From ranking_artist
 where rank <= 3 
 ```
-3. Write a query to find tracks where the liveness score is above the average.
+2. Write a query to find tracks where the liveness score is above the average.
 ```sql
 Select 
 	track,
@@ -133,7 +133,7 @@ Select
 From  spotify
 Where liveness > (Select avg(liveness) From spotify)
 ```
-5. **Use a `WITH` clause to calculate the difference between the highest and lowest energy values for tracks in each album.**
+3. **Use a `WITH` clause to calculate the difference between the highest and lowest energy values for tracks in each album.**
 ```sql
 WITH cte
 AS
@@ -151,7 +151,7 @@ FROM cte
 ORDER BY 2 DESC
 ```
    
-5. Find tracks where the energy-to-liveness ratio is greater than 1.2.
+4. Find tracks where the energy-to-liveness ratio is greater than 1.2.
 ```sql
 Select 
 	track,
@@ -163,7 +163,7 @@ Where liveness > 0
     AND (energy / liveness) > 1.2;
 
 ```
-7. Calculate the cumulative sum of likes for tracks ordered by the number of views, using window functions.
+5. Calculate the cumulative sum of likes for tracks ordered by the number of views, using window functions.
 ```sql
 Select 
  track,
